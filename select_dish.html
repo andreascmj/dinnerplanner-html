@@ -11,10 +11,13 @@
 
     <!-- Add custom CSS here -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+    <!-- Temporary CSS -->
+    <link rel="stylesheet" href="css/temporarySelectDish.css">
 
 </head>
 
@@ -29,7 +32,13 @@
                 </li>
                 <li> <input type="number" label="Persons" />
                 </li>
-                
+                <li> <table id="dinner-table">
+                    <tr><td>Dish name</td><td>Cost</td>
+                    </table>
+                </li>
+                <li id="total-cost"> SEK 0.00
+                </li>
+                <li><button class="btn btn-default" id="confirm-button" value="Confirm Dinner">Confirm Dinner</button></li>
             </ul>
         </div>
 
@@ -37,9 +46,9 @@
         <div id="page-content-wrapper">
             <div class="content-header">
                 <h1>
-                    <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
-                    Simple Sidebar
+                    Select dish
                 </h1>
+                
             </div>
             <!-- Keep all page content within the page-content inset div! -->
             <div class="page-content inset">
