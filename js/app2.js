@@ -9,6 +9,6 @@ $(function() {
 	//And create the needed controllers and views
 	//var exampleView = new ExampleView($("#exampleView"),model);
    	//var exampleViewController = new ExampleViewController(exampleView,model);
-   	var selectDishView = new SelectDishView($('#page-content'), model);
-   	var selectDishViewController = new SelectDishViewController(selectDishView, model);
+   	var dishView = new DishView($('#dish-page-content'), model);
+   	var dishViewController = new DishViewController(dishView, model);
 });
