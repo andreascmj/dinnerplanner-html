@@ -23,12 +23,15 @@ var SelectDishView = function(container, model){
 			var dishContainer = document.createElement("div");
 			dishContainer.className="col-xs-4";
 			dishContainer.id=dishes[i].name;
+			dishCenter = document.createElement("div");
+			dishCenter.className="well col-xs-5 col-xs-offset-3"
 			var dishImage = document.createElement("img");
 			dishImage.src="images/" + dishes[i].image;
 			var dishName = document.createElement("p");
 			dishName.innerHTML=dishes[i].name;
-			dishContainer.appendChild(dishImage);
-			dishContainer.appendChild(dishName);
+			dishCenter.appendChild(dishImage);
+			dishCenter.appendChild(dishName);
+			dishContainer.appendChild(dishCenter);
 			this.foodContainer.append(dishContainer);
 		};
 	}
