@@ -6,11 +6,12 @@ var SelectDishView = function(container, model){
 	this.searchField = container.find('#searchField');
 	this.dishChooser = container.find('#dishChooser');
 	this.foodContainer = container.find('#foodContainer');
-	//alert("view igång");
 	populate_main_content();
 
 	function populate_main_content() {
-		var dishes = model.getAllDishes("starter");
+		var dishType = this.dishChooser.value.toLowerCase();
+		alert(dishType);
+		var dishes = model.getAllDishes(dishType);
 		for (var i = 0; i<dishes.length; i++) {
 			var dishContainer = document.createElement("div");
 			dishContainer.class="col-xs-4";
@@ -27,6 +28,7 @@ var SelectDishView = function(container, model){
 
 	function update(arg){
 		update_total_cost();
+		populate_main_content();
 	}
 
 	function update_total_cost(){
