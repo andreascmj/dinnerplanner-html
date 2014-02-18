@@ -5,9 +5,11 @@ var SelectDishView = function(container, model){
 	this.searchBtn = container.find('#searchBtn');
 	this.searchField = container.find('#searchField');
 	this.dishChooser = container.find('#dishChooser');
+	this.numberGuests = container.find('#numberGuests');
 	this.foodContainer = container.find('#foodContainer');
 
 	this.populate_main_content = function() {
+		this.foodContainer.children().remove();
 
 		var dishType = this.dishChooser.val().toLowerCase();
 
@@ -20,19 +22,24 @@ var SelectDishView = function(container, model){
 			dishImage.src="images/" + dishes[i].image;
 			var dishName = document.createElement("p");
 			dishName.innerHTML=dishes[i].name;
-			dishContainer.appendChild(dishName);
 			dishContainer.appendChild(dishImage);
+			dishContainer.appendChild(dishName);
 			this.foodContainer.append(dishContainer);
 		};
 	}
 
-	function update(arg){
-		update_total_cost();
-		populate_main_content();
+	this.update = function(arg){
+		if (arg == "price"){
+			update_total_cost();
+		}
+		else{
+			update_total_cost();
+			this.populate_main_content();
+		}
 
 	}
 
 	function update_total_cost(){
-		//$("#total-cost").html=("SEK " + model.getTotalMenuPrice());
+		$("#total-cost").html("SEK " + model.getTotalMenuPrice());
 	}
 }

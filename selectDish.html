@@ -35,19 +35,20 @@
         <!-- Sidebar -->
         <div class="col-xs-3" id="sidebar-wrapper">
             <h2>My dinner</h2>
-                <input class="form-control" type="number" label="Persons" />
-
+            <div class="col-xs-3">
+                <input id="numberGuests" class="form-control" type="number" label="Persons" />
+            </div>
                 <table class="col-xs-12" id="dinner-table">
                     <tr><td>Dish name</td><td>Cost</td></tr>
                 </table>
-                    <p id="total-cost"> SEK 0.00 </p>
+                <p id="total-cost"> SEK 0.00 </p>
                 
                 <button class="btn btn-default" id="confirm-button" value="Confirm Dinner">Confirm Dinner</button></li>
         </div>
 
         <!-- Page content -->
         <div class="col-xs-9" id="main-content">
-        <h1>
+        <h1 class="text-center">
                 Select dish
         </h1>
 

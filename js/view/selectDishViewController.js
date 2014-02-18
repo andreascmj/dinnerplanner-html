@@ -1,6 +1,7 @@
 var SelectDishViewController = function(view, model){
 	view.dishChooser.on("change", filterDishType);
 	view.searchBtn.click(search);
+	view.numberGuests.on("change", setNumberOfGuests);
 	filterDishType();
 
 
@@ -23,5 +24,8 @@ var SelectDishViewController = function(view, model){
 	}
 	function navigate() {
 		window.location="dish.html";
+	}
+	function setNumberOfGuests (){
+		model.setNumberOfGuests(view.numberGuests.val());
 	}
 }
