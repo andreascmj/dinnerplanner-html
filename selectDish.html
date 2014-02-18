@@ -10,7 +10,6 @@
     <title>Select dish</title>
 
     <!-- Add custom CSS here -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -27,59 +26,52 @@
 
 <body>
 
-    <div id="page-content">
+    <div class="well">
+        <h1>Dinner planner <small>From the best chefs in the world directly into your kitchen</small></h1>
+    </div>
+
+    <div class="row" id="page-content">
 
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">My dinner
-                </li>
-                <li> <input class="form-control" type="number" label="Persons" />
-                </li>
-                <li> <table id="dinner-table">
-                    <tr><td>Dish name</td><td>Cost</td>
-                    </table>
-                </li>
-                <li id="total-cost"> SEK 0.00
-                </li>
-                <li><button class="btn btn-default" id="confirm-button" value="Confirm Dinner">Confirm Dinner</button></li>
-            </ul>
+        <div class="col-xs-3" id="sidebar-wrapper">
+            <h2>My dinner</h2>
+                <input class="form-control" type="number" label="Persons" />
+
+                <table class="col-xs-12" id="dinner-table">
+                    <tr><td>Dish name</td><td>Cost</td></tr>
+                </table>
+                    <p id="total-cost"> SEK 0.00 </p>
+                
+                <button class="btn btn-default" id="confirm-button" value="Confirm Dinner">Confirm Dinner</button></li>
         </div>
 
         <!-- Page content -->
-        <div id="main-content">
-            <div class="well">
-            <h1>Dinner planner <small>From the best chefs in the world directly into your kitchen</small></h1>
-            </div>
+        <div class="col-xs-9" id="main-content">
+        <h1>
+                Select dish
+        </h1>
 
-            <div class="content-header">
-                <h1>
-                    Select dish
-                </h1>
-            </div>
-                <div class="row">
-                    <div class="col-xs-4">
-                        <div class="input-group">
-                            <input id="searchField" type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <button id="searchBtn" class="btn btn-default" type="button">Go!</button>
-                            </span>
-                        </div>
+            <div class="row">
+                <div class="col-xs-5 col-md-offset-1">
+                    <div class="input-group">
+                        <input id="searchField" type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button id="searchBtn" class="btn btn-default" type="button">Go!</button>
+                        </span>
                     </div>
+                </div>
 
-                    <div class="col-xs-4">
-                        <select id="dishChooser" class="form-control">
-                            <option value="starter">Starter</option>
-                            <option value="main dish">Main Dish</option>
-                            <option value="dessert">Dessert</option>
-                        </select>
-                    </div> 
+                <div class="col-xs-5">
+                    <select id="dishChooser" class="form-control">
+                        <option value="starter">Starter</option>
+                        <option value="main dish">Main Dish</option>
+                        <option value="dessert">Dessert</option>
+                    </select>
                 </div> 
-                <div class="row">
-                    <div id="foodContainer">
+            </div> 
+            <div id="foodContainer">
 
-                    </div>
-                </div> 
+            </div>
 
         </div>
 
