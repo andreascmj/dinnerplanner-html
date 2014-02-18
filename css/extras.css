@@ -1,0 +1,8 @@
+#sidebar-wrapper {
+	height: 100%;
+	min-height: 100%;
+	background-color: #c6e5ff;
+	padding-bottom: 75px;
+	border-right-style: solid;
+	border-right-color: #008aff;
+}
