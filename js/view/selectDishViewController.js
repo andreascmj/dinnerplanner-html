@@ -1,14 +1,19 @@
 var SelectDishViewController = function(view, model){
+	view.dishChooser.on("change", filterDishType);
+	view.searchBtn.click(search);
+	for (var i = 0; i <= view.foodContainer.children.length; i++) {
+		view.foodContainer.children[i].click(search);
+	};
 
-	view.numPersons.change("setNewPersons()");
-	view.searchBtn.click("search()");
 
-
-	setNewPersons = function() {
+	function setNewPersons() {
 		model.setNumberOfGuests(view.numPersons.value);
 	}
 
-	search = function(){
+	function search(){
 		alert("Search");
+	}
+	function filterDishType() {
+		alert("change");
 	}
 }

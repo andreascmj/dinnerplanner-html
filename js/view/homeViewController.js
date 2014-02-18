@@ -1,3 +1,3 @@
 function newDinnerClick(){
-	window.location = "select_dish.html";
+	window.location = "selectDish.html";
 }
