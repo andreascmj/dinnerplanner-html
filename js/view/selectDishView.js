@@ -24,11 +24,13 @@ var SelectDishView = function(container, model){
 			dishContainer.className="col-xs-4";
 			dishContainer.id=dishes[i].name;
 			dishCenter = document.createElement("div");
-			dishCenter.className="well col-xs-5 col-xs-offset-3"
+			dishCenter.className="well";
 			var dishImage = document.createElement("img");
 			dishImage.src="images/" + dishes[i].image;
+			dishImage.className="center-block";
 			var dishName = document.createElement("p");
 			dishName.innerHTML=dishes[i].name;
+			dishName.className="text-center"
 			dishCenter.appendChild(dishImage);
 			dishCenter.appendChild(dishName);
 			dishContainer.appendChild(dishCenter);
