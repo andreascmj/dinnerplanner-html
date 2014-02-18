@@ -4,6 +4,7 @@ var DishView = function(container, model){
 	this.selected_dish_description = container.find("#selected_dish_description");
 	this.dishName = container.find('#dishName');
 	this.ingredients = container.find('#ingredients');
+	this.dishPic = container.find('#dishPic');
 	this.chooseDishBtn = container.find('#chooseDishBtn');
 	this.backBtn = container.find('#backBtn');
 
@@ -12,6 +13,7 @@ var DishView = function(container, model){
 	function fillDescription(){
 		this.dishName.innerHTML = model.getDish(1).name;
 		this.selected_dish_description.innerHTML = model.getDish(1).description;
+		this.dishPic.src = "images/"+model.getDish(1).image;
 
 		var ingredientString = "";
 		var allIngredients = model.getAllIngredients();
