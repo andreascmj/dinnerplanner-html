@@ -8,12 +8,17 @@ var SelectDishView = function(container, model){
 	this.numberGuests = container.find('#numberGuests');
 	this.foodContainer = container.find('#foodContainer');
 
-	this.populate_main_content = function() {
-		this.foodContainer.children().remove();
-
+	this.populate_main_content = function(search) {
+		this.foodContainer.children().remove();	
 		var dishType = this.dishChooser.val().toLowerCase();
+		var dishes;
+		if (search != ""){
+			dishes = model.getAllDishes(dishType, search);
+		}
+		else{
+			dishes = model.getAllDishes(dishType);
+		}
 
-		var dishes = model.getAllDishes(dishType);
 		for (var i = 0; i<dishes.length; i++) {
 			var dishContainer = document.createElement("div");
 			dishContainer.className="col-xs-4";

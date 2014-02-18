@@ -1,6 +1,6 @@
 var SelectDishViewController = function(view, model){
 	view.dishChooser.on("change", filterDishType);
-	view.searchBtn.click(search);
+	view.searchBtn.click(filterDishType);
 	view.numberGuests.on("change", setNumberOfGuests);
 	filterDishType();
 
@@ -14,8 +14,8 @@ var SelectDishViewController = function(view, model){
 	}
 
 	function filterDishType() {
-		view.foodContainer.children().remove();
-		view.populate_main_content();
+		var search = view.searchField.val();
+		view.populate_main_content(search);
 		setClickersOnImgs();
 	}
 
