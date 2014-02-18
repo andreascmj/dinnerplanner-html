@@ -11,4 +11,6 @@ $(function() {
    	//var exampleViewController = new ExampleViewController(exampleView,model);
    	var selectDishView = new SelectDishView($('#page-content'), model);
    	var selectDishViewController = new SelectDishViewController(selectDishView, model);
+   	var dishView = new DishView($('#dish-page-content'), model);
+   	var dishViewController = new DishViewController(dishView, model);
 });

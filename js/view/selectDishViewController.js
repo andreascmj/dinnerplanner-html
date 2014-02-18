@@ -19,6 +19,9 @@ var SelectDishViewController = function(view, model){
 	}
 
 	function setClickersOnImgs() {
-		view.foodContainer.children().click(search);
+		view.foodContainer.children().click(navigate);
+	}
+	function navigate() {
+		window.location="dish.html";
 	}
 }
