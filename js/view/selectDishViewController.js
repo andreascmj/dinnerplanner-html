@@ -1,7 +1,7 @@
 var SelectDishViewController = function(view, model){
 	view.dishChooser.on("change", filterDishType);
 	view.searchBtn.click(search);
-	setClickersOnImgs();
+	filterDishType();
 
 
 	function setNewPersons() {
@@ -13,8 +13,8 @@ var SelectDishViewController = function(view, model){
 	}
 
 	function filterDishType() {
-		alert("change");
-		populate_main_content();
+		view.foodContainer.children().remove();
+		view.populate_main_content();
 		setClickersOnImgs();
 	}
 

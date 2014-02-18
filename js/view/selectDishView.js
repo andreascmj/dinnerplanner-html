@@ -6,11 +6,11 @@ var SelectDishView = function(container, model){
 	this.searchField = container.find('#searchField');
 	this.dishChooser = container.find('#dishChooser');
 	this.foodContainer = container.find('#foodContainer');
-	populate_main_content();
 
-	function populate_main_content() {
-		var dishType = this.dishChooser.value.toLowerCase();
-		alert(dishType);
+	this.populate_main_content = function() {
+
+		var dishType = this.dishChooser.val().toLowerCase();
+
 		var dishes = model.getAllDishes(dishType);
 		for (var i = 0; i<dishes.length; i++) {
 			var dishContainer = document.createElement("div");
@@ -22,13 +22,14 @@ var SelectDishView = function(container, model){
 			dishName.innerHTML=dishes[i].name;
 			dishContainer.appendChild(dishName);
 			dishContainer.appendChild(dishImage);
-			this.foodContainer.appendChild(dishContainer);
+			this.foodContainer.append(dishContainer);
 		};
 	}
 
 	function update(arg){
 		update_total_cost();
 		populate_main_content();
+
 	}
 
 	function update_total_cost(){
