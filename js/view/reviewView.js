@@ -1,13 +1,13 @@
 var ReviewView = function(container, model){
 	
 	model.addObserver(this);
-	this.foodContainer = container.find('#foodContainer');
+	this.menuFoodContainer = container.find('#menuFoodContainer');
 	this.backBtn = container.find('#backBtn');
 	this.dinnerHeader = container.find('#dinnerHeader');
 	populate();
 
 	function populate() {
-		$("#foodContainer").children().remove();	
+		$("#menuFoodContainer").children().remove();	
 
 		var dishes=model.getFullMenu();
 
@@ -22,13 +22,17 @@ var ReviewView = function(container, model){
 			dishImage.className="center-block";
 			var dishName = document.createElement("p");
 			dishName.innerHTML=dishes[i].name;
-			dishName.className="text-center"
+			dishName.className="text-center";
+			var dishPrice = document.createElement("p");
+			dishPrice.innerHTML=model.getDishPrice(dishes[i])*model.getNumberOfGuests() +" SEK";
+			dishPrice.className="text-center"
 			dishCenter.appendChild(dishImage);
 			dishCenter.appendChild(dishName);
+			dishCenter.appendChild(dishPrice);
 			dishContainer.appendChild(dishCenter);
-			$("#foodContainer").append(dishContainer);
+			$("#menuFoodContainer").append(dishContainer);
 		};
 		$('#dinnerHeader').html("My Dinner: " + model.getNumberOfGuests() + " people");
-		//container.hide();
+		$('#totalMenuPrice').html("Total: " + model.getTotalMenuPrice());
 	}
 }

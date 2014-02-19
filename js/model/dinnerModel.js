@@ -96,6 +96,14 @@ var DinnerModel = function() {
 		}
 	}
 
+	this.getDishPrice = function(dish){
+		var dishPrice = 0;
+		for (var i = dish.ingredients.length - 1; i >= 0; i--) {
+			dishPrice += dish.ingredients[i].price;
+		};
+		return dishPrice;
+	}
+
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
