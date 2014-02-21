@@ -1,13 +1,13 @@
 var PreparationView = function(container, model){
 	
 	model.addObserver(this);
-	this.menuFoodContainer = container.find('#menuFoodContainer');
+	this.preparationFoodContainer = container.find('#preparationFoodContainer');
 	this.backBtn = container.find('#backBtn');
-	this.dinnerHeader = container.find('#dinnerHeader');
+	this.prepDinnerHeader = container.find('#prepDinnerHeader');
 	populate();
 
 	function populate() {
-		$("#menuFoodContainer").children().remove();	
+		$("#preparationFoodContainer").children().remove();	
 
 		var dishes=model.getFullMenu();
 
@@ -49,8 +49,16 @@ var PreparationView = function(container, model){
 			dishContainer.appendChild(dishIngredients);
 			dishContainer.appendChild(dishPreparations);
 
-			$("#menuFoodContainer").append(dishContainer);
+			$("#preparationFoodContainer").append(dishContainer);
 		};
-		$('#dinnerHeader').html("My Dinner: " + model.getNumberOfGuests() + " people");
+		$('#prepDinnerHeader').html("My Dinner: " + model.getNumberOfGuests() + " people");
+	}
+
+	this.update = function(arg){
+		if (arg == "addedDish") {
+			populate();
+		} else if (arg == "price") {
+			populate();
+		}
 	}
 }

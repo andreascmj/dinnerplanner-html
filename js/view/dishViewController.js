@@ -1,11 +1,16 @@
 var DishViewController = function(view, model){
-	view.chooseDishBtn.click(search);
+
+	view.chooseDishBtn.click(chooseDish);
 	view.backBtn.click(back);
 
-	function search(){
-		alert("Search");
+	function chooseDish(){
+		var id = model.getCurrentDishId();
+		model.addDishToMenu(id);
+		back();
 	}
 	function back(){
-		window.location="selectDish.html"
+		view.confirmBtn.removeAttr("disabled");
+		window.dishPage.hide();
+		window.mainContent.show();
 	}
 }

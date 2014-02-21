@@ -8,16 +8,16 @@ var DishView = function(container, model){
 	this.chooseDishBtn = container.find('#chooseDishBtn');
 	this.backBtn = container.find('#backBtn');
 	this.ingredientsHeader = container.find("#ingredientsHeader");
+	this.confirmBtn = $("#confirm-button");
 
-	fillDescription();
-
-	function fillDescription(){
-		this.dishName.innerHTML = model.getDish(1).name;
-		this.selected_dish_description.innerHTML = model.getDish(1).description;
-		this.dishPic.src = "images/"+model.getDish(1).image;
+	function fillDescription(){	
+		var id = model.getCurrentDishId();
+		this.dishName.innerHTML = model.getDish(id).name;
+		this.selected_dish_description.innerHTML = model.getDish(id).description;
+		this.dishPic.src = "images/"+model.getDish(id).image;
 
 		var ingredientString = "";
-		var allIngredients = model.getAllIngredients();
+		var allIngredients = model.getDish(id).ingredients;
 		for (var i = 0; i < allIngredients.length; i++) {
 			var ingr = allIngredients[i];
 			ingredientString += ingr.quantity*model.getNumberOfGuests() +" "+ingr.unit+" "+ingr.name;
@@ -25,6 +25,10 @@ var DishView = function(container, model){
 		};
 		this.ingredients.innerHTML = ingredientString;
 		this.ingredientsHeader.innerHTML = "Ingredients for: " + model.getNumberOfGuests() + " people";
+	}
+
+	this.update = function(arg){
+		fillDescription();
 	}
 }
 

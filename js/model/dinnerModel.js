@@ -1,11 +1,18 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
- 
+ 	
+ 	var currentDishId = 1;
 	var menu = [];
 	var numberOfGuests =3; //set default number of guests
-	menu['starter'] = 1; //set a starter to the menu, to use for testing
-	menu['main dish'] = 2;
 
+	this.setCurrentDishId = function(id) {
+		currentDishId = id;
+		notifyObservers("idUpdate");
+	}
+
+	this.getCurrentDishId = function() {
+		return currentDishId;
+	}
 
 	this.setNumberOfGuests = function(num) {
 		if(num>0) {
@@ -56,6 +63,7 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		menu[this.getDish(id).type] = id; 
+		notifyObservers("addedDish");
 	}
 
 	//Removes dish from menu
@@ -103,6 +111,13 @@ var DinnerModel = function() {
 			dishPrice += dish.ingredients[i].price;
 		};
 		return dishPrice;
+	}
+	this.getDishType = function (id) {
+	  for(key in dishes){
+			if(dishes[key].id == id) {
+				return dishes[key].type;
+			}
+		}
 	}
 
 
