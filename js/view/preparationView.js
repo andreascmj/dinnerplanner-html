@@ -14,7 +14,7 @@ var PreparationView = function(container, model){
 		for (var i = 0; i<dishes.length; i++) {
 			var dishContainer = document.createElement("div");
 			dishContainer.className="row";
-			dishContainer.style.margin-top="10px";
+			dishContainer.style.marginTop="10px";
 			dishContainer.id=dishes[i].name;
 
 			var dishImageDiv = document.createElement("div");
@@ -28,11 +28,22 @@ var PreparationView = function(container, model){
 
 			var dishIngredients = document.createElement("div");
 			dishIngredients.className="col-xs-3"
-			dishIngredients.innerHTML=dishes[i].ingredients;
+			var dishName = "<h2>" + dishes[i].name + "</h2>";
+
+			var ingredientString = "";
+			var allIngredients = dishes[i].ingredients;
+
+			for (var j = 0; j < allIngredients.length; j++) {
+				var ingr = allIngredients[j];
+				ingredientString += ingr.quantity*model.getNumberOfGuests() +" "+ingr.unit+" "+ingr.name;
+				ingredientString += "<br>";
+			};
+
+			dishIngredients.innerHTML=dishName + ingredientString;
 
 			var dishPreparations = document.createElement("div");
 			dishPreparations.className="col-xs-6"
-			dishPreparations.innerHTML=dishes[i].description;
+			dishPreparations.innerHTML= "<h3>Preparations</h3>" + dishes[i].description;
 
 			dishContainer.appendChild(dishImageDiv);
 			dishContainer.appendChild(dishIngredients);

@@ -4,6 +4,7 @@ var DinnerModel = function() {
 	var menu = [];
 	var numberOfGuests =3; //set default number of guests
 	menu['starter'] = 1; //set a starter to the menu, to use for testing
+	menu['main dish'] = 2;
 
 
 	this.setNumberOfGuests = function(num) {
