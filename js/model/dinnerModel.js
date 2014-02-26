@@ -65,7 +65,10 @@ var DinnerModel = function() {
 		menu[this.getDish(id).type] = id; 
 		notifyObservers("addedDish");
 	}
-
+	this.removeDishFromMenyByType = function(type){
+		delete menu[type];
+		notifyObservers("addedDish");
+	}
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		var type = this.getDish(id).type;

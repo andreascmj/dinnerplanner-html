@@ -2,6 +2,9 @@ var SelectDishViewController = function(view, model){
 	view.dishChooser.on("change", filterDishType);
 	view.searchBtn.click(filterDishType);
 	view.confirmBtn.click(confirm);
+	view.removeStarter.click(removeStarter);
+	view.removeMainDish.click(removeMainDish);
+	view.removeDessert.click(removeDessert);
 	view.numberGuests.on("change", setNumberOfGuests);
 	filterDishType();
 
@@ -14,9 +17,6 @@ var SelectDishViewController = function(view, model){
 		model.setNumberOfGuests(view.numPersons.value);
 	}
 
-	function search(){
-		alert("Search");
-	}
 
 	function filterDishType() {
 		var search = view.searchField.val();
@@ -40,5 +40,14 @@ var SelectDishViewController = function(view, model){
 	}
 	function setNumberOfGuests (){
 		model.setNumberOfGuests(view.numberGuests.val());
+	}
+	function removeStarter (){
+		model.removeDishFromMenyByType('starter');
+	}
+	function removeMainDish (){
+		model.removeDishFromMenyByType('main dish');
+	}
+	function removeDessert (){
+		model.removeDishFromMenyByType('dessert');
 	}
 }

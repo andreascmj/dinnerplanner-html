@@ -8,9 +8,13 @@ var SelectDishView = function(container, model){
 	this.numberGuests = container.find('#numberGuests');
 	this.foodContainer = container.find('#foodContainer');
 	this.confirmBtn = container.find('#confirm-button');
+	this.removeStarter = container.find('#removeStarter');
+	this.removeMainDish = container.find('#removeMainDish');
+	this.removeDessert = container.find('#removeDessert');
 	tableStarter = $('#tableStarter');
 	tableMainDish = $('#tableMainDish');
 	tableDessert = $('#tableDessert');
+	update_side_bar();
 
 	this.populate_main_content = function(search) {
 		this.numberGuests.value= model.getNumberOfGuests();
@@ -60,11 +64,29 @@ var SelectDishView = function(container, model){
 		var starter = model.getSelectedDish("starter");
 		var mainDish = model.getSelectedDish("main dish");
 		var dessert = model.getSelectedDish("dessert");
-		tableStarter.children().remove();
-		tableMainDish.children().remove();
-		tableDessert.children().remove();
+		var tableStarterItems = tableStarter.children();
+		var tableMainDishItems = tableMainDish.children()
+		var tableDessertItems = tableDessert.children()
+		for (var i = 0; i < tableStarterItems.length; i++) {
+			if (tableStarterItems[i].id != "removeStarter"){
+				tableStarterItems[i].remove();
+			}
+		};
+
+		for (var i = 0; i < tableMainDishItems.length; i++) {
+			if (tableMainDishItems[i].id != "removeMainDish"){
+				tableMainDishItems[i].remove();
+			}
+		};
+
+		for (var i = 0; i < tableDessertItems.length; i++) {
+			if (tableDessertItems[i].id != "removeDessert"){
+				tableDessertItems[i].remove();
+			}
+		};
 
 		if (starter != null){
+			this.tableStarter.show();
 			var dishName = document.createElement("td");
 			var dishPrice = document.createElement("td");
 			
@@ -73,8 +95,12 @@ var SelectDishView = function(container, model){
 			tableStarter.append(dishName);
 			tableStarter.append(dishPrice);
 		}
+		else{
+			this.tableStarter.hide();
+		}
 
 		if (mainDish != null){
+			this.tableMainDish.show();
 			var dishName = document.createElement("td");
 			var dishPrice = document.createElement("td");
 			dishName.innerHTML=model.getDish(mainDish).name;
@@ -82,14 +108,21 @@ var SelectDishView = function(container, model){
 			tableMainDish.append(dishName);
 			tableMainDish.append(dishPrice);
 		}
+		else{
+			this.tableMainDish.hide();
+		}
 
 		if (dessert != null){
+			this.tableDessert.show();
 			var dishName = document.createElement("td");
 			var dishPrice = document.createElement("td");
 			dishName.innerHTML=model.getDish(dessert).name;
 			dishPrice.innerHTML= model.getDishPrice(model.getDish(dessert))*model.getNumberOfGuests();
 			tableDessert.append(dishName);
 			tableDessert.append(dishPrice);
+		}
+		else{
+			this.tableDessert.hide();
 		}
 	}
 }
